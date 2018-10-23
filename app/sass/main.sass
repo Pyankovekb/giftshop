@@ -1,0 +1,670 @@
+@import '..libs/normalize-css/normalize.css'
+@import '_fonts'
+
+$primary: #05aecc
+$alternate: #f0626e
+$additional: #362a4f
+
+$spacing: 30px
+
+*
+    // box-sizing: border-box
+    // transition: 1s ease
+    &:before, &:after
+        box-sizing: border-box
+body 
+    font-size: 16px
+    position: relative
+    font-family: 'Lato-Regular'
+    overflow-x: hidden
+    color: white
+h2 
+    margin: 0
+    padding: 0
+
+ul
+    display: block
+    list-style: none
+    padding: 0
+    margin: 0
+li  
+    display: inline-block
+    cursor: pointer
+a
+    color: inherit
+    text-decoration: none
+p
+    margin: 0
+button 
+    border: none
+    cursor: pointer
+    transition: 1s ease
+.img-responsive 
+    display: block
+    max-width: 100%
+    height: auto
+.grid
+    display: grid
+header 
+    padding: 5px 5px
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: 35px 1fr
+    justify-content: space-between
+    img
+        grid-column: 1 / 3
+        grid-row: 1/3
+        align-self: center
+.upper, .bottom
+    grid-column: 5/7
+.upper
+    grid-row: 1 / 2
+    width: 100%
+    display: flex
+    justify-content: space-between
+    color: black
+    li
+
+.bottom
+    grid-row: 2/3
+    display: flex
+    justify-content: space-between
+    button
+        margin: 0 5px
+        height: 80px
+        padding: 0 25px
+        background-color: $primary
+        color: white
+        img
+            vertical-align: middle
+            margin-left: 3px
+        span
+            vertical-align: middle
+        &:nth-child(even)
+            background-color: $alternate
+
+nav 
+    width: 100vw
+    margin-top: 20px
+    background-color: $primary
+    line-height: 60px
+    ul
+        display: block
+        text-align: center
+        margin: 0
+    li.nav
+        display: inline-block
+        position: relative
+        padding: 0 30px
+        height: 60px
+        &:hover
+            background-color: white
+            color: $alternate
+            
+        &:hover .dropdown
+            visibility: visible
+            opacity: 1
+
+.dropdown
+    position: absolute
+    visibility: hidden
+    color: black
+    background-color: rgba(255, 255, 255, 0.6)
+    opacity: 0
+    left: 0
+    top: 65px
+    transition: display 1s ease, opacity 1s ease
+    line-height: 1
+    z-index: 1
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.5)
+    .group
+        opacity: 0.8
+        span
+            margin: 5px 10px
+            float: left
+            color: $alternate
+        
+            
+        
+.item 
+    display: grid
+    position: relative
+    padding: 10px 10px
+    grid-template-columns: repeat(30px)
+    grid-template-rows: repeat(90px)
+    justify-content: center
+    justify-items: flex-start
+    grid-gap: 3px 3px
+    align-items: stretch
+    
+    img
+        grid-column: 1 / 2
+        grid-row: 1 / 4
+    h2
+        grid-column: 2 / 4
+        grid-row: 1 / 2
+        font-size: 16px
+        color: $alternate
+        line-height: normal
+    p
+        grid-column: 2 / 4
+        grid-row: 2 /3
+        font-size: 14px
+        margin: 0
+        width: 120px
+        height: 24px
+        white-space: normal
+        line-height: 0.9
+        text-overflow: ellipsis
+        overflow: hidden
+    button
+        width: 100px
+        background-color: $primary
+        color: white
+        grid-column: 2/4
+        grid-row: 3/4
+        font-size: 12px
+        &::after,&:before
+            display: block
+            position: absolute
+            content: ''
+            width: 90%
+            height: 1px
+            bottom: 0
+            left: 5%
+            background-color: #cacaca
+.banner-section
+    margin: 15px 0
+    padding: 5px 5px
+    grid-template-columns: repeat(9, 1fr)
+    grid-template-rows: repeat(10, 1fr)
+    grid-gap: 5px 5px
+    overflow: hidden
+    height: 180vh
+.banner-item
+    min-height: 17vh
+    min-width: 13vw
+    background-size: cover
+    background-position: center center
+    position: relative
+    transition: .3s ease
+    overflow: hidden
+    &::before 
+        content: ''
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        background-color: #f2eace
+        mix-blend-mode: color
+        opacity: 0.2
+        transition: .5s ease
+    &:hover::before
+        mix-blend-mode: normal
+        background-color: $additional
+        opacity: 0.8
+    &:hover .banner-title 
+        background: none
+    &:hover .banner-add
+        background: none
+
+    &:nth-child(1)
+        grid-column: 1/6
+        grid-row: 1/6
+        background-size: cover
+    &:nth-child(2)
+        grid-column: 6/10
+        grid-row: 1/4
+        background-size: cover
+        background-position: 10% 10%
+        background-repeat: no-repeat
+    &:nth-child(3)
+        grid-column: 6/10
+        grid-row: 4/6
+    &:nth-child(4)
+        grid-column: 1/6
+        grid-row: 6/8
+        background-color: $alternate
+        padding: 5% 10%
+        
+        form
+            display: flex
+            justify-content: space-around
+            align-items: center
+            align-content: center
+        input:first-child
+            width: 70%
+            padding: 25px
+            
+        input:last-child
+            width: 20%
+            height: 100px
+            background-image: url('../img/search.png')
+            background-position: center
+            background-repeat: no-repeat
+
+            border: none
+            background-color: transparent
+
+
+
+        &:before
+            content: none
+    &:nth-child(5)
+        grid-column: 6 / 10
+        grid-row: 6 / 11
+        position: relative
+    &:nth-child(6)
+        grid-column: 1 / 6
+        grid-row: 8 / 11
+    .banner-title 
+        position: absolute
+        padding: 10px 20px
+        width: fit-content
+        max-width: fit-content
+        top: 60%
+        height: fit-content
+        background: rgba(54, 42, 79, 0.8 )
+        text-align: center
+        h2
+            font-family: Aparajita
+            font-size: 2.5rem
+            color: $alternate
+            white-space: nowrap
+
+        p
+            text-transform: uppercase
+            width: 200px
+            font-size: .9rem
+    
+    
+.banner-item
+    &:nth-child(1)
+        & .banner-title
+            &::after
+                position: absolute
+                content: ' Lorem ipsum dolor sit amet'
+                width: 100%
+                vertical-align: middle
+                padding: 10px 20px
+                font-size: 0.8rem
+                text-transform: uppercase
+                left: 0
+                top: 105px
+                background-color: $alternate
+
+.banner-item
+    &:nth-child(2)
+        & .banner-title
+            h2
+                font-size: 1.6rem
+            p
+                width: 170px
+                font-size: 0.8rem
+                height: 30px
+                overflow: hidden
+
+.banner-item
+    &:nth-child(5)
+        & .banner-title
+            right: -200px
+            top: 50%
+            transform: rotate(270deg)
+            position: absolute
+            display: flex
+         
+            padding: 0 20px
+            h2
+                font-size: 5rem
+                color: white
+            button
+                position: relative
+                transform: rotate(90deg)
+                font-size: 3rem
+                border-radius: 50%
+                background-color: white
+                color: $alternate
+                width: 60px
+                height: 60px
+                vertical-align: middle
+                right: -10px
+                margin: 0 40px
+            .after-button
+                content: ''
+                position: absolute
+                width: 92px
+                height: 112px
+                right: 32px
+                bottom: 0
+                background-color: $alternate
+                z-index: -1
+                &:after
+                    content: ''
+                    background-color: $alternate 
+                    width: 20%
+                    height: 17%
+                    display: block
+                    position: absolute
+                    left: -7px
+                    top: 0
+                    opacity: .6
+                    transform: skewX(-30deg)
+.banner-add
+    position: absolute
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr 1fr
+    width: min-content
+    font-size: 2rem
+    background: rgba(54, 42, 79, 0.8 )
+    padding: 0 0
+    bottom: 0
+    right: 0
+    p
+        width: fit-content
+        white-space: nowrap
+    p:first-child
+        padding: 10px 40px
+    p:last-child
+        padding: 15px 20px
+        font-size: 1.5rem
+        background-color: #434343
+        span
+            font-size: 1rem
+            &:last-child
+                vertical-align: top
+    div
+        cursor: pointer
+    div.whis
+        background-color: darken($primary, 5%)
+        img
+            margin: 10px 20px
+            width: 30px
+            height: 30px
+
+    div.cart
+        background-color: $alternate
+        img
+            margin: 10px 20px
+            width: 30px
+            height: 30px
+.banner-item:nth-child(3) .banner-add
+    bottom: 10%
+    background-color: $primary
+    p:first-child
+        font-size: 1rem
+        padding-top: 20px
+
+.title
+    display: grid
+    grid-template-columns: 1fr 1fr
+    justify-content: space-between
+    width: 100%
+    overflow: hidden
+    &:after
+        content: ''
+        display: block
+        width: 200%
+        border-bottom: 1px solid #b9b9b9
+
+    h2
+        color: $primary
+        font-size: 2rem
+        margin: 10px 60px
+        align-self: flex-end
+        width: max-content
+        &:after
+            content: ''
+            display: block
+            position: relative
+            top: 11px
+            width: 110%
+            border-bottom: 1px solid $alternate
+        
+    .buttons
+        justify-self: end
+        margin-right: 5px
+    button
+        background-color: #3c3c3c
+        color: white
+        width: 65px
+        height: 80px
+        font-size: 3rem
+        &:hover
+            background-color: $alternate
+.viewport
+    overflow: hidden
+    padding: 20px 5px
+    ul
+        display: inline-block
+        width: max-content
+        margin-left: 0 //-508
+        transition: 1s ease
+    li
+        margin-right: 20px
+        height: 300px
+        width: 483px
+        background-size: 170%
+        background-position: left bottom
+        position: relative
+        
+        &::before 
+            content: ''
+            transition: 1s ease
+            position: absolute
+            top: 0
+            bottom: 0
+            left: 0
+            right: 0
+            background-color: #f2eace
+            mix-blend-mode: hue
+            opacity: 0.3
+            
+        &:hover::before
+            mix-blend-mode: normal
+            background-color: $additional
+            opacity: 0.8
+        &:hover .banner-add
+            opacity: 1
+        &:nth-child(3n+2)
+            background-size: 100%
+        &:nth-child(3n+3)
+            background-size: 130%
+            background-position: 80% 70%        
+    .banner-add
+        background: $primary
+        opacity: 0
+        margin: 0 auto
+        bottom: 40%
+        right: 8%
+        transition: 1s ease
+
+.featured
+    .title
+        button
+            &:hover, &:focus
+                background-color: $primary
+    li
+        background: none
+        color: #3c3c3c
+        height: 500px
+        width: 354px
+        border: 1px solid #dddddd
+        cursor: auto
+        &:before
+            background: none
+        &:hover::before
+            background: none
+        .product-item
+            grid-template-columns: repeat(100px, 4)
+            grid-template-rows: 400px 50px 50px
+            position: relative
+            &:hover .image
+                transform: scale(0.98)
+            .image              
+                grid-column: 1/5
+                grid-row: 1/2
+                background-size: 140%
+                background-position: 50% 0
+                transition: 1s ease
+            .description
+                grid-column: 1/5
+                grid-row: 2/3
+                padding: 5px
+                border: 1px solid #dddddd
+                width: auto
+                height: auto
+                h2
+                    font-size: 1.2rem
+                p
+                    font-size: 0.9rem
+                    color: $alternate
+            .opt, .whis, .cart, .price
+                &:active
+                    transform: scale(0.9)            
+            .opt
+                grid-column: 1/2
+                grid-row: 3/4
+                border: 1px solid #dddddd
+                
+            .whis
+                grid-column: 2/3    
+                grid-row: 3/4
+                border: 1px solid #dddddd
+            .cart
+                grid-column: 3/4
+                grid-row: 3/4
+                border: 1px solid #dddddd
+            .price
+                grid-column: 4/5
+                grid-row: 3/4
+                color: white
+                border: 1px solid #dddddd
+                background-color: $alternate
+                padding-top: 10px
+                text-align: center
+                span
+                    font-size: 1.6rem
+        .new
+            .price
+                background-color: $primary
+            .description
+                p
+                    color: $primary
+            &:after
+                content: 'New'
+                font-size: 1.4rem
+                color: white
+                background-color: $primary
+                position: absolute
+                padding: 15px 30px
+                top: 15px
+        .sale
+            &:after
+                content: '20% OFF'
+                font-size: 1.4rem
+                color: white
+                background-color: $alternate
+                position: absolute
+                padding: 15px 15px
+                top: 15px
+
+.who-we-are
+    .title
+        &:before
+        content: ''
+        display: block
+        width: 100%
+        position: relative
+        border-bottom: 1px solid #b9b9b9
+        &:after
+            width: 0
+        h2
+            &:after
+                top: 12px
+    p
+        color: black
+        padding: 30px
+    .register
+        grid-template-columns: 1fr 1fr 1fr
+        grid-gap: 20px
+        cursor: pointer
+        position: relative
+        
+    .layout
+        display: grid
+        grid-template-columns: 1fr 1fr
+        padding: 40px
+        img
+            width: 100%
+        h2
+            align-self: center
+            margin-left: 40px
+            font-size: 2.5rem
+    .chose
+        grid-column: 1/2
+        background-color: #434343
+    .login
+        grid-column: 2/3
+        background-color: $primary
+    .checkout
+        grid-column: 3/4
+        background-color: $alternate
+    .rg-btn
+        grid-column: 1/4
+        grid-row: 2/3
+        width: 60%
+        height: fit-content
+        max-height: 100%
+        padding: 20px
+        font-size: 1.8rem
+        color: white
+        background-color: $primary
+        justify-self: center
+.footer-nav
+    margin-top: 40px
+    color: #434343
+    &:before
+        content: ''
+        display: block
+        width: 100%
+        position: relative
+        border-bottom: 1px solid #b9b9b9
+    .nav-container
+        margin: 40px
+        grid-template-columns: 1fr 1fr 1fr 1fr
+        h2
+            margin: 40px 0
+        li
+            display: list-item
+            margin: 10px 0
+        .social
+            input
+                box-sizing: border-box
+                text-align: center
+                width: 350px
+                padding: 20px
+            button
+                background-color: $primary
+                padding: 20px
+                width: 350px
+                color: white
+            h2
+                margin: 20px 0
+
+footer
+    border-top: 1px solid #434343
+    color: #434343
+    padding: 20px 40px 5px 40px
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+    span
+        color: $alternate
+
+@import '_media'
+
+
+
+    
+
