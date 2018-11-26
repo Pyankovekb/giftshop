@@ -1,49 +1,50 @@
-// первая карусель
-    let news = document.querySelector('.news');
-    let newsButtons = news.querySelectorAll('button');
-    let newsCarousel = news.querySelector('ul');
-    let newsWidth = parseInt(getComputedStyle(news.querySelector('li')).width) + 
-                        parseInt(getComputedStyle(news.querySelector('li')).marginRight) +
-                            parseInt(getComputedStyle(news.querySelector('li')).marginLeft) + 3
-        console.log();
-    let position = 0;
 
-    newsButtons[0].onclick = function() {
-        if(parseInt(newsCarousel.style.marginLeft) < 0) {
-            position  = position + newsWidth;
-            newsCarousel.style.marginLeft = position + 'px';
-        }
+(function() {
+  let buttons = document.querySelectorAll('.slider');
+
+    //вешаем обработчик события на кнопку и в зависимости от
+    // направления выбираем функцию
+    for(let i = 0; i < buttons.length; i++) {
+        let button = buttons[i];
+        button.addEventListener('click', function(event) {
+            let viewport = event.target.parentNode.parentNode.nextElementSibling;
+            if(event.target.className.indexOf('prev') > 0) {
+                prev(viewport);
+            } else {
+                next(viewport);
+            }
+        })
     }
-    newsButtons[1].onclick = function(){
-        if(parseInt(newsCarousel.style.marginLeft) <= -3060) {
-            position = 0
-            newsCarousel.style.marginLeft = position + 'px';
+
+    //пролистать назад
+    function prev(elem) {
+        let carousel = elem.querySelector('ul');
+        let elementWidth = elem.querySelector('li').offsetWidth + 
+                parseInt(getComputedStyle(elem.querySelector('li')).marginRight) + 
+                    parseInt(getComputedStyle(elem.querySelector('li')).marginLeft);
+        let position = parseInt(carousel.style.marginLeft);
+   
+        if(position && position < elementWidth) {
+            position += elementWidth;
+            carousel.style.marginLeft = position + 'px';
+        }
+
+    }
+    //пролистать вперед
+    function next(elem) {
+        let carousel = elem.querySelector('ul');
+        let carouselElemsCount = carousel.children.length;
+        let elementWidth = elem.querySelector('li').offsetWidth + 
+                parseInt(getComputedStyle(elem.querySelector('li')).marginRight) + 
+                    parseInt(getComputedStyle(elem.querySelector('li')).marginLeft);
+            // если marginleft изначально нет, задаем его
+        let position = parseInt(carousel.style.marginLeft) ? parseInt(carousel.style.marginLeft) : 0 ;
+            
+        if( position <= -((carouselElemsCount -2 ) * elementWidth)) {
+            carousel.style.marginLeft = '0px';
         } else {
-            position = position - newsWidth;
-            newsCarousel.style.marginLeft = position + 'px';
+            position = position - elementWidth;
+            carousel.style.marginLeft = position + 'px';
         }
     }
-// вторая карусель 
-    let features = document.querySelector('.featured');
-    let featuresButtons = features.querySelectorAll('button');
-    let featuresCarusel = features.querySelector('ul');
-    let featuresWidth = parseInt(getComputedStyle(features.querySelector('li')).width) + 
-                            parseInt(getComputedStyle(features.querySelector('li')).marginRight) +
-                                parseInt(getComputedStyle(features.querySelector('li')).marginLeft) + 5
-
-
-    featuresButtons[0].onclick = function() {
-        if(parseInt(featuresCarusel.style.marginLeft) < 0) {
-            position = position + featuresWidth;
-            featuresCarusel.style.marginLeft = position + 'px';
-        }
-    }
-    featuresButtons[1].onclick = function() {
-        if(parseInt(featuresCarusel.style.marginLeft) <= -1900){
-            position = 0
-            featuresCarusel.style.marginLeft = position + 'px';
-        } else {
-        position = position - featuresWidth;
-        featuresCarusel.style.marginLeft = position + 'px';
-        }
-    }
+})()
